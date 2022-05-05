@@ -1,16 +1,16 @@
 # EX-05-Feature-Generation
 
 
-# AIM
+## AIM
 To read the given data and perform Feature Generation process and save the data to a file. 
 
-# Explanation
+## Explanation
 Feature Generation (also known as feature construction, feature extraction or feature engineering) is the process of transforming features into new features that better relate to the target.
  It includes two process:
         Feature Encoding
         Feature Scaling
         
-# FEATURE ENCODING:
+## FEATURE ENCODING:
 ### 1. Ordinal Encoding
 An ordinal encoding involves mapping each unique label to an integer value. This type of encoding is really only appropriate if there is a known relationship between the categories. This relationship does exist for some of the variables in our dataset, and ideally, this should be harnessed when preparing the data.
 
@@ -36,7 +36,7 @@ Maximum absolute scaling scales the data to its maximum value; that is, it divid
 ### 4. RobustScaler
 RobustScaler transforms the feature vector by subtracting the median and then dividing by the interquartile range (75% value — 25% value).
 
-# ALGORITHM
+## ALGORITHM
 ### STEP 1
 Read the given Data
 ### STEP 2
@@ -104,33 +104,108 @@ df4
 
 # OUPUT
 
-### Given DataFrame
+## Given DataFrame
 ![ex5 1](https://user-images.githubusercontent.com/93427923/166866921-11d3cb0b-069e-475d-9dc2-9492dd1c7d29.png)
 
-### Feature encoding using Ordinal Encoder
+## Feature encoding using Ordinal Encoder
 ![ex5 2](https://user-images.githubusercontent.com/93427923/166866958-64542bf3-4b0b-4e48-868f-830642e5e4a7.png)
 
-### Feature encoding using Binary Encoder
+## Feature encoding using Binary Encoder
 ![ex5 3](https://user-images.githubusercontent.com/93427923/166866998-9172f7f9-b98f-4fdc-870c-28256e3775de.png)
 ![ex5 4](https://user-images.githubusercontent.com/93427923/166867012-f4a288da-4b5f-4bbe-b7ff-ff1144c3d1f2.png)
 
-### Feature encoding using One Hot Encoder
+## Feature encoding using One Hot Encoder
 ![ex5 5](https://user-images.githubusercontent.com/93427923/166867051-7fde4212-a225-497e-a410-f3d18986f848.png)
 
-### Feature encoding using Target Encoder
+## Feature encoding using Target Encoder
 ![ex5 6](https://user-images.githubusercontent.com/93427923/166867162-4169133e-3182-409c-9f22-571dd7493049.png)
 
-### Feature encoding using Label Encoder
+## Feature encoding using Label Encoder
 ![ex5 7](https://user-images.githubusercontent.com/93427923/166867193-1a71f812-8f68-4d3e-9a26-52ca31e12839.png)
 
-### Feature scaling using Standard Scaler
+## Feature scaling using Standard Scaler
 ![ex5 8](https://user-images.githubusercontent.com/93427923/166867239-0effcf9b-0aef-4b77-b990-a29f2489ed5f.png)
 
-### Feature scaling using MaxAbs Scaler
+## Feature scaling using MaxAbs Scaler
 ![ex5 9](https://user-images.githubusercontent.com/93427923/166867269-f4b375e2-a0e9-423a-877d-7dd59f783376.png)
 
 ### Feature scaling using MinMax Scaler
 ![ex5 10](https://user-images.githubusercontent.com/93427923/166867297-b6815cc9-272e-4846-a3f8-a8f475a08c2b.png)
 
-### Feature scaling using Robust Scaler
+## Feature scaling using Robust Scaler
 ![ex5 11](https://user-images.githubusercontent.com/93427923/166867328-047b2a8a-a856-482f-b8c0-b867d2f382bf.png)
+
+# 2.FEATURE GENERATION FOR Encoding.csv
+## CODE FOR FEATURE ENCODING AND FEATURE SCALING:
+```
+import pandas as pd
+df=pd.read_csv("Encoding Data.csv")
+df
+from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
+temp=["Cold","Warm","Hot"]
+enc=OrdinalEncoder(categories=[temp])
+df["ord_2"]=enc.fit_transform(df[["ord_2"]])
+df
+from category_encoders import BinaryEncoder
+be=BinaryEncoder()
+df['bin_1']=be.fit_transform(df[['bin_1']])
+df
+be1=BinaryEncoder()
+df['bin_2']=be1.fit_transform(df[['bin_2']])
+df
+from sklearn.preprocessing import OneHotEncoder
+ohe=OneHotEncoder(sparse=False)
+ohe.fit_transform(df[["nom_0"]])
+le=LabelEncoder()
+df["nom_0"]=le.fit_transform(df[["nom_0"]])
+df
+
+from sklearn.preprocessing import StandardScaler
+sc=StandardScaler()
+df1=pd.DataFrame(sc.fit_transform(df),columns=['id','bin_1','bin_2','nom_0','Ord_2'])
+df1
+
+from sklearn.preprocessing import MinMaxScaler
+mms=MinMaxScaler()
+df2=pd.DataFrame(mms.fit_transform(df),columns=['id','bin_1','bin_2','nom_0','Ord_2'])
+df2
+
+from sklearn.preprocessing import MaxAbsScaler mas=MaxAbsScaler()
+df3=pd.DataFrame(mas.fit_transform(df),columns=['id','bin_1','bin_2','nom_0','Ord_2'])
+df3
+
+from sklearn.preprocessing import RobustScaler
+rs=RobustScaler()
+df4=pd.DataFrame(rs.fit_transform(df),columns=['id','bin_1','bin_2','nom_0','Ord_2'])
+df4
+```
+
+# OUTPUT:
+## Given DataFrame
+![ex5 1](https://user-images.githubusercontent.com/93427923/166868334-4d635547-d30a-432c-9d22-f3c2517f254f.png)
+
+## Feature encoding using Ordinal Encoder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
