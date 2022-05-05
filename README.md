@@ -208,17 +208,82 @@ df4
 ## Feature scaling using Robust Scaler
 ![e5 9](https://user-images.githubusercontent.com/93427923/166869201-26e06f21-1f96-4527-972c-7d3abe838610.png)
 
+# 3.FEATURE GENERATION FOR titanic_dataset.csv
+## CODE FOR FEATURE ENCODING AND FEATURE SCALING:
+```
+import pandas as pd
+df=pd.read_csv("titanic_dataset.csv")
+df
+df.isnull().sum()
+df["Age"]=df["Age"].fillna(df["Age"].median())
+df["Embarked"]=df["Embarked"].fillna(df["Embarked"].mode()[0])
+df
+df.drop("Cabin",axis=1,inplace=True)
+df.drop("Ticket",axis=1,inplace=True)
+df.drop("Name",axis=1,inplace=True)
+df.isnull().sum()
+df
+from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
+embark=["C","S","Q"]
+emb=OrdinalEncoder(categories=[embark])
+df["Embarked"]=emb.fit_transform(df[["Embarked"]])
+df
+from category_encoders import BinaryEncoder
+be=BinaryEncoder()
+df["Sex"]=be.fit_transform(df[["Sex"]])
+df
 
+from sklearn.preprocessing import StandardScaler
+ss=StandardScaler()
+df1=pd.DataFrame(ss.fit_transform(df),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked','PClass'])
+df1
 
+from sklearn.preprocessing import MinMaxScaler
+mms=MinMaxScaler()
+df2=pd.DataFrame(mms.fit_transform(df),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked','PClass'])
+df2
 
+from sklearn.preprocessing import MaxAbsScaler
+mas=MaxAbsScaler()
+df3=pd.DataFrame(mas.fit_transform(df),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked','PClass'])
+df3
 
+from sklearn.preprocessing import RobustScaler
+rs = RobustScaler()
+df4=pd.DataFrame(rs.fit_transform(df),columns=['Passenger','Survived','Pclass','Sex','Age','SibSp','Parch','Fare','Embarked','PClass'])
+df4
+```
 
+# OUTPUT:
+## Given DataFrame
+![5 1](https://user-images.githubusercontent.com/93427923/166869690-178bb7f5-e94d-49ec-9d22-b4ea12db1f8b.png)
 
+## Resolving null value data
+![5 2](https://user-images.githubusercontent.com/93427923/166869727-d29cf218-d4b7-42e4-88c7-a377684c3936.png)
 
+## Dropping unnecessary columns
+![5 3](https://user-images.githubusercontent.com/93427923/166869773-d781f23b-6854-4562-8eff-97567f1f8e25.png)
 
+## Feature encoding using Ordinal Encoder
+![5 4](https://user-images.githubusercontent.com/93427923/166870066-6c10baca-1b05-4cc2-a5f7-b57647af8365.png)
 
+## Feature encoding using Binary Encoder
+![5 5](https://user-images.githubusercontent.com/93427923/166870083-cc9b9631-ee56-4237-b8ba-92c9837069a8.png)
 
+## Feature scaling using Standard Scaler
+![5 6](https://user-images.githubusercontent.com/93427923/166870097-0da7bafd-fe79-4fa4-bddf-71660b59196d.png)
 
+## Feature scaling using MinMax Scaler
+![5 7](https://user-images.githubusercontent.com/93427923/166870113-cdf11e4f-1223-42ea-9aea-074894826f1d.png)
+
+## Feature scaling using MaxAbs Scaler
+![5 8](https://user-images.githubusercontent.com/93427923/166870121-51724f1a-f575-4d4c-be0a-661631762175.png)
+
+## Feature scaling using Robust Scaler
+![5 9](https://user-images.githubusercontent.com/93427923/166870135-8fb7b5a2-7370-429e-bfeb-70a4da64b9a5.png)
+
+# RESULT:
+Feature Encoding process and Feature Scaling process is applied to the given data frame sucessfully.
 
 
 
