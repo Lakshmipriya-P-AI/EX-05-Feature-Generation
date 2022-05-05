@@ -182,13 +182,31 @@ df4
 
 # OUTPUT:
 ## Given DataFrame
-![ex5 1](https://user-images.githubusercontent.com/93427923/166868334-4d635547-d30a-432c-9d22-f3c2517f254f.png)
+![e5 1](https://user-images.githubusercontent.com/93427923/166868334-4d635547-d30a-432c-9d22-f3c2517f254f.png)
 
 ## Feature encoding using Ordinal Encoder
+![e5 2](https://user-images.githubusercontent.com/93427923/166868938-4ac7fcae-2c03-4699-927a-786efc705d4d.png)
 
+## Feature encoding using Binary Encoder
+![e5 3](https://user-images.githubusercontent.com/93427923/166868990-51bc797e-7e23-4434-9aa7-25d044855d00.png)
 
+## Feature encoding using One Hot Encoder
+![e5 4](https://user-images.githubusercontent.com/93427923/166869028-a394bb4f-d7d4-45aa-9a31-78913d977a10.png)
 
+## Feature encoding using Label Encoder
+![e5 5](https://user-images.githubusercontent.com/93427923/166869077-7f669d6f-c92f-4e2c-a082-de3fbf749b79.png)
 
+## Feature scaling using Standard Scaler
+![e5 6](https://user-images.githubusercontent.com/93427923/166869114-b6ae6f3e-ea74-4a5f-ba33-0dd25facccd8.png)
+
+## Feature scaling using MinMax Scaler
+![e5 7](https://user-images.githubusercontent.com/93427923/166869146-7227630a-d7f7-4319-820b-d7ba402a11f8.png)
+
+## Feature scaling using MaxAbs Scaler
+![e5 8](https://user-images.githubusercontent.com/93427923/166869173-d1be1bde-b512-4f20-8848-39d0395e3ef3.png)
+
+## Feature scaling using Robust Scaler
+![e5 9](https://user-images.githubusercontent.com/93427923/166869201-26e06f21-1f96-4527-972c-7d3abe838610.png)
 
 
 
